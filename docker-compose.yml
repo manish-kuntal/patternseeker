@@ -1,0 +1,16 @@
+services:
+  api:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: sqlite:///./data/pattern.db
+      CORS_ORIGINS: http://localhost:5173
+      INGEST_API_KEY: change-me
+      OLLAMA_ENABLED: "false"
+    volumes:
+      - pattern_data:/app/data
+
+volumes:
+  pattern_data:
